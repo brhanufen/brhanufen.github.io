@@ -157,8 +157,25 @@
       padding: 22px 26px;
       margin-bottom: 16px;
       transition: box-shadow 0.2s;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
     }
     .pub:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .pub-figure {
+      flex-shrink: 0;
+      width: 180px;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #f8f8f6;
+    }
+    .pub-figure img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .pub-content { flex: 1; min-width: 0; }
     .pub-title {
       font-family: var(--serif);
       font-weight: 600;
@@ -233,6 +250,8 @@
       .hero-links { justify-content: center; }
       nav .links { gap: 16px; }
       nav .links a { font-size: 13px; }
+      .pub { flex-direction: column; }
+      .pub-figure { width: 100%; max-width: 300px; }
     }
   </style>
 </head>
@@ -334,89 +353,148 @@
     <h2 class="section-title">Publications</h2>
 
     <div class="pub">
-      <span class="pub-status status-prep">In Preparation</span>
-      <div class="pub-title">A genomic foundation model for predicting arbovirus epidemic emergence across RNA virus families</div>
-      <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
-      <div class="pub-venue">Target: Bioinformatics (Oxford)</div>
-      <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-        ArboFM: domain-adapted DNABERT-2 via continued MLM pre-training on 120K+ arbovirus genome windows (9,299 genomes, 362 species, 6 families).
-        Predicts epidemic emergence with AP = 0.978 (Flaviviridae). Retrospective temporal validation detects Zika, chikungunya,
-        and West Nile epidemic lineages before documented emergence.
-      </p>
-    </div>
-
-    <div class="pub">
-      <span class="pub-status status-prep">In Preparation</span>
-      <div class="pub-title">Deciphering the host-switching grammar of flaviviruses using foundation model embeddings: a leakage-aware evaluation framework</div>
-      <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
-      <div class="pub-venue">Target: PLOS Computational Biology</div>
-      <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-        DNABERT-2 embeddings on 3,031 flavivirus genomes. Quantifies 15-percentage-point performance inflation from phylogenetic leakage. 
-        Identifies UpA-containing motifs linked to the OAS/RNaseL innate immunity pathway via genome-localized attribution.
-      </p>
-      <div class="pub-links">
-        <a href="https://github.com/brhanufen/host-switching-grammar">Code</a>
+      <div class="pub-figure">
+        <img src="papers/figures/arbofm_fig1.png" alt="ArboFM study design and analysis pipeline">
+      </div>
+      <div class="pub-content">
+        <span class="pub-status status-prep">In Preparation</span>
+        <div class="pub-title">A genomic foundation model for predicting arbovirus epidemic emergence across RNA virus families</div>
+        <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
+        <div class="pub-venue">Target: Bioinformatics (Oxford)</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          ArboFM: domain-adapted DNABERT-2 via continued MLM pre-training on 120K+ arbovirus genome windows (9,299 genomes, 362 species, 6 families).
+          Predicts epidemic emergence with AP = 0.978 (Flaviviridae). Retrospective temporal validation detects Zika, chikungunya,
+          and West Nile epidemic lineages before documented emergence.
+        </p>
+        <div class="pub-links">
+          <a href="papers/manuscripts/ArboFM_Manuscript.docx">Manuscript</a>
+        </div>
       </div>
     </div>
 
     <div class="pub">
-      <span class="pub-status status-prep">In Preparation</span>
-      <div class="pub-title">Cross-family comparison of host-switching grammar in arthropod-borne viruses reveals convergent evolution of family-specific immune evasion strategies</div>
-      <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
-      <div class="pub-venue">Target: Virus Evolution (Oxford)</div>
-      <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-        Cross-family transfer learning across 4 arbovirus families (6,052 genomes, 124,883 windows).
-        Demonstrates host-switching grammar is predominantly family-specific (Jaccard &asymp; 0), supporting convergent evolution.
-      </p>
-    </div>
-
-    <div class="pub">
-      <span class="pub-status status-prep">In Preparation</span>
-      <div class="pub-title">Genome-scale classification of flavivirus host range using composition and codon-usage signatures</div>
-      <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
-      <div class="pub-venue">Target: Journal of Virology</div>
-      <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-        Species-stratified ML classifiers on 1,285 curated flavivirus genomes with 97 compositional features.
-        Achieves PR-AUC = 1.000 for ISFV vs. dual-host classification. CpG suppression identified as the primary discriminative feature.
-      </p>
-      <div class="pub-links">
-        <a href="https://github.com/brhanufen/Orthoflavivirus-host-range-classification">Code</a>
+      <div class="pub-figure">
+        <img src="papers/figures/flavivirus_grammar_fig1.png" alt="Flavivirus dataset curation and leakage-aware evaluation framework">
+      </div>
+      <div class="pub-content">
+        <span class="pub-status status-prep">In Preparation</span>
+        <div class="pub-title">Deciphering the host-switching grammar of flaviviruses using foundation model embeddings: a leakage-aware evaluation framework</div>
+        <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
+        <div class="pub-venue">Target: PLOS Computational Biology</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          DNABERT-2 embeddings on 3,031 flavivirus genomes. Quantifies 15-percentage-point performance inflation from phylogenetic leakage.
+          Identifies UpA-containing motifs linked to the OAS/RNaseL innate immunity pathway via genome-localized attribution.
+        </p>
+        <div class="pub-links">
+          <a href="papers/manuscripts/Flavivirus_Grammar_Manuscript.docx">Manuscript</a>
+          <a href="https://github.com/brhanufen/host-switching-grammar">Code</a>
+        </div>
       </div>
     </div>
 
     <div class="pub">
-      <span class="pub-status status-published">Published 2025</span>
-      <div class="pub-title">MoSeq based 3D behavioral profiling uncovers neuropathic behavior changes in diabetic mouse model</div>
-      <div class="pub-authors">Ashiquzzaman A*, Lee E*, <strong>Znabu BF*</strong>, Sakib AN, Chung G, Kim SS, Kim YR, Kwon H-S, Chung E.</div>
-      <div class="pub-venue">Scientific Reports 15, 15114 (2025)</div>
-      <div class="pub-links">
-        <a href="https://www.nature.com/articles/s41598-025-98184-9">Paper</a>
-        <a href="https://github.com/zamanashiq3/MoSeq-based-3D-Behavioral-Profiling-Analysis">Code</a>
+      <div class="pub-figure">
+        <img src="papers/figures/cross_family_fig1.png" alt="Cross-family dataset construction and genome architecture">
+      </div>
+      <div class="pub-content">
+        <span class="pub-status status-prep">In Preparation</span>
+        <div class="pub-title">Cross-family comparison of host-switching grammar in arthropod-borne viruses reveals convergent evolution of family-specific immune evasion strategies</div>
+        <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
+        <div class="pub-venue">Target: Virus Evolution (Oxford)</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Cross-family transfer learning across 4 arbovirus families (6,052 genomes, 124,883 windows).
+          Demonstrates host-switching grammar is predominantly family-specific (Jaccard &asymp; 0), supporting convergent evolution.
+        </p>
+        <div class="pub-links">
+          <a href="papers/manuscripts/Cross_Family_Manuscript.docx">Manuscript</a>
+        </div>
       </div>
     </div>
 
     <div class="pub">
-      <span class="pub-status status-submitted">Preprint</span>
-      <div class="pub-title">Interpretable deep learning-based multi-omics integration for prognosis in hepatocellular carcinoma</div>
-      <div class="pub-authors"><strong>Znabu BF</strong>, Atif Z.</div>
-      <div class="pub-venue">bioRxiv (2026)</div>
-      <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-        Attention-based multi-branch deep learning framework integrating multi-omics data for interpretable survival prediction in hepatocellular carcinoma.
-      </p>
-      <div class="pub-links">
-        <a href="https://www.biorxiv.org/content/10.64898/2026.04.01.715980v1">Paper</a>
-        <a href="https://github.com/brhanufen/hcc-multiomics-attention">Code</a>
+      <div class="pub-figure">
+        <img src="papers/figures/jvi_fig1.png" alt="Flavivirus host range dataset curation workflow">
+      </div>
+      <div class="pub-content">
+        <span class="pub-status status-prep">In Preparation</span>
+        <div class="pub-title">Genome-scale classification of flavivirus host range using composition and codon-usage signatures</div>
+        <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
+        <div class="pub-venue">Target: Journal of Virology</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Species-stratified ML classifiers on 1,285 curated flavivirus genomes with 97 compositional features.
+          Achieves PR-AUC = 1.000 for ISFV vs. dual-host classification. CpG suppression identified as the primary discriminative feature.
+        </p>
+        <div class="pub-links">
+          <a href="papers/manuscripts/JVI_Host_Range_Manuscript.docx">Manuscript</a>
+          <a href="https://github.com/brhanufen/Orthoflavivirus-host-range-classification">Code</a>
+        </div>
       </div>
     </div>
 
     <div class="pub">
-      <span class="pub-status status-submitted">Preprint</span>
-      <div class="pub-title">NativeReady: an open benchmark and sequence-based triage model for native mass spectrometry suitability</div>
-      <div class="pub-authors"><strong>Znabu BF</strong>, Atif Z.</div>
-      <div class="pub-venue">bioRxiv (2026)</div>
-      <div class="pub-links">
-        <a href="https://www.biorxiv.org/content/10.64898/2026.05.03.722506v1">Paper</a>
-        <a href="https://github.com/brhanufen/nativeready">Code</a>
+      <div class="pub-figure">
+        <img src="papers/figures/virapredict_fig1.png" alt="ViraPredict study design and dengue genome distribution">
+      </div>
+      <div class="pub-content">
+        <span class="pub-status status-prep">In Preparation</span>
+        <div class="pub-title">Probabilistic forecasting of dengue virus evolution using multi-modal foundation models and fitness landscape analysis</div>
+        <div class="pub-authors"><strong>Znabu BF</strong>.</div>
+        <div class="pub-venue">Target: TBD</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          ViraPredict: multi-modal framework combining ESM-2 protein language models (650M params), fitness landscape modeling,
+          and LoRA-fine-tuned DNABERT-2 with temporal embeddings on 29,493 curated dengue genomes across 130 countries.
+        </p>
+        <div class="pub-links">
+          <a href="papers/manuscripts/ViraPredict_Manuscript.docx">Manuscript</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-content">
+        <span class="pub-status status-published">Published 2025</span>
+        <div class="pub-title">MoSeq based 3D behavioral profiling uncovers neuropathic behavior changes in diabetic mouse model</div>
+        <div class="pub-authors">Ashiquzzaman A*, Lee E*, <strong>Znabu BF*</strong>, Sakib AN, Chung G, Kim SS, Kim YR, Kwon H-S, Chung E.</div>
+        <div class="pub-venue">Scientific Reports 15, 15114 (2025)</div>
+        <div class="pub-links">
+          <a href="https://www.nature.com/articles/s41598-025-98184-9">Paper</a>
+          <a href="https://github.com/zamanashiq3/MoSeq-based-3D-Behavioral-Profiling-Analysis">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-figure">
+        <img src="papers/figures/hcc_fig1.png" alt="Gene expression heatmap and signature correlations in LUAD">
+      </div>
+      <div class="pub-content">
+        <span class="pub-status status-submitted">Preprint</span>
+        <div class="pub-title">Interpretable deep learning-based multi-omics integration for prognosis in hepatocellular carcinoma</div>
+        <div class="pub-authors"><strong>Znabu BF</strong>, Atif Z.</div>
+        <div class="pub-venue">bioRxiv (2026)</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Attention-based multi-branch deep learning framework integrating multi-omics data for interpretable survival prediction in hepatocellular carcinoma.
+        </p>
+        <div class="pub-links">
+          <a href="https://www.biorxiv.org/content/10.64898/2026.04.01.715980v1">Paper</a>
+          <a href="https://github.com/brhanufen/hcc-multiomics-attention">Code</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-figure">
+        <img src="papers/figures/nativeready_fig1.png" alt="NativeReady pipeline from data sources to public release">
+      </div>
+      <div class="pub-content">
+        <span class="pub-status status-submitted">Preprint</span>
+        <div class="pub-title">NativeReady: an open benchmark and sequence-based triage model for native mass spectrometry suitability</div>
+        <div class="pub-authors"><strong>Znabu BF</strong>, Atif Z.</div>
+        <div class="pub-venue">bioRxiv (2026)</div>
+        <div class="pub-links">
+          <a href="https://www.biorxiv.org/content/10.64898/2026.05.03.722506v1">Paper</a>
+          <a href="https://github.com/brhanufen/nativeready">Code</a>
+        </div>
       </div>
     </div>
   </section>
