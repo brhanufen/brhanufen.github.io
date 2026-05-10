@@ -217,6 +217,51 @@
     .status-submitted { background: #fdebd0; color: #b9770e; }
     .status-prep { background: #eaf2f8; color: #2874a6; }
 
+    /* === EXPERIENCE === */
+    .exp {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .exp:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .exp-role {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .exp-date {
+      font-size: 13px;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+    .exp-org {
+      font-size: 14px;
+      color: var(--accent-light);
+      margin-bottom: 8px;
+    }
+    .exp-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .exp-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .exp-tags span {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+
     /* === ABOUT === */
     .about p { margin-bottom: 14px; font-size: 15px; color: var(--muted); line-height: 1.8; }
 
@@ -264,6 +309,7 @@
       <a href="#about">About</a>
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
       <a href="#awards">Awards</a>
     </div>
   </div>
@@ -335,8 +381,16 @@
       <span>Poster presentation at the NCV Annual Virology Symposium: &ldquo;Cracking the viral code: codon usage and CpG patterns predict host specificity.&rdquo;</span>
     </div>
     <div class="news-item">
+      <span class="news-date">Jun 2025</span>
+      <span>Started <strong>Research Internship</strong> at <strong>Microsoft Research</strong>, Health Futures &mdash; Biomedical Platforms and Genomics team, Redmond, WA.</span>
+    </div>
+    <div class="news-item">
       <span class="news-date">Apr 2025</span>
       <span>Paper on MoSeq-based 3D behavioral profiling in diabetic neuropathy published in <em>Scientific Reports</em>.</span>
+    </div>
+    <div class="news-item">
+      <span class="news-date">Mar 2025</span>
+      <span>Accepted offer for a <strong>Research Internship &mdash; Genomics</strong> at <strong>Microsoft Research</strong>, Health Futures group.</span>
     </div>
     <div class="news-item">
       <span class="news-date">2025</span>
@@ -498,6 +552,64 @@
           <a href="https://www.biorxiv.org/content/10.64898/2026.05.03.722506v1">Paper</a>
           <a href="https://github.com/brhanufen/nativeready">Code</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+
+    <div class="exp">
+      <div class="exp-header">
+        <span class="exp-role">Research Intern &mdash; Genomics</span>
+        <span class="exp-date">Jun &ndash; Aug 2025</span>
+      </div>
+      <div class="exp-org">Microsoft Research, Health Futures &mdash; Biomedical Platforms and Genomics &middot; Redmond, WA</div>
+      <div class="exp-desc">
+        Worked with the Biomedical Platforms and Genomics team within Microsoft Health Futures, an interdisciplinary group developing next-generation methods and tools for health and life sciences. Contributed to genomics research and discovery platform development, working with large genomic datasets, language models, and ML model validation within distributed computing environments.
+      </div>
+      <div class="exp-tags">
+        <span>Genomics</span>
+        <span>Language Models</span>
+        <span>ML Validation</span>
+        <span>Azure</span>
+        <span>Python</span>
+      </div>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header">
+        <span class="exp-role">PhD Researcher</span>
+        <span class="exp-date">Aug 2024 &ndash; Present</span>
+      </div>
+      <div class="exp-org">Sexton Lab, University of Nebraska&ndash;Lincoln &middot; Nebraska Center for Virology</div>
+      <div class="exp-desc">
+        Building genomic foundation models (ArboFM) for arbovirus epidemic emergence prediction. Developing leakage-aware evaluation frameworks, cross-family transfer learning, and multi-modal forecasting systems for viral evolution.
+      </div>
+      <div class="exp-tags">
+        <span>Foundation Models</span>
+        <span>DNABERT-2</span>
+        <span>ESM-2</span>
+        <span>Transfer Learning</span>
+        <span>PyTorch</span>
+      </div>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header">
+        <span class="exp-role">Research Assistant</span>
+        <span class="exp-date">Mar 2021 &ndash; Jun 2024</span>
+      </div>
+      <div class="exp-org">Neurophotonics Lab, GIST &middot; South Korea</div>
+      <div class="exp-desc">
+        Developed unsupervised autoregressive and Hidden Markov models for behavioral time-series analysis. Benchmarked deep learning-based 3D pose estimation against traditional 2D methods.
+      </div>
+      <div class="exp-tags">
+        <span>AR-HMM</span>
+        <span>DeepLabCut</span>
+        <span>Behavioral Analysis</span>
+        <span>MATLAB</span>
       </div>
     </div>
   </section>
