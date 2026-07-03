@@ -354,6 +354,10 @@
   <section id="news">
     <h2 class="section-title">News</h2>
     <div class="news-item">
+      <span class="news-date">Jul 2026</span>
+      <span>Released <strong><a href="https://github.com/brhanufen/enhancerdiff">EnhancerDiff</a></strong>, a discrete-diffusion generator of cell-type-specific regulatory DNA that reuses the ProtDiff-ESM machinery re-pointed from protein to DNA. Trained on the Gosai 2024 MPRA, it designs 200 bp enhancers for K562, HepG2, and SK-N-SH, then validates them with the <a href="https://github.com/brhanufen/oraclegap">OracleGap</a> suite against the real Malinois K562 (target) and Enformer K562 DNase (independent) oracles via <a href="https://proto.evodesign.org">Proto</a>. The K562 and HepG2 galleries hold up under the independent oracle (near-zero independence gap), SK-N-SH shows a larger gap, and all designs are highly novel (mean novelty 0.94 to 0.96) rather than memorized copies of natural enhancers.</span>
+    </div>
+    <div class="news-item">
       <span class="news-date">Jun 2026</span>
       <span>Released <strong><a href="https://github.com/brhanufen/spliceconsensus">SpliceConsensus</a></strong>, a reproducible benchmark of splicing variant-effect predictors against a real experimental splicing assay, revealing a shared exon-interior blind spot. On 27,733 exonic variants from the MFASS multiplexed assay (Cheung 2019), 22 percent of splice-disrupting variants (228 of 1,050) are missed by every tool, and roughly 79 percent of those sit in the exon interior, consistent with ESE/ESS disruptions that splice-site models cannot see. Among single predictors Pangolin ranks highest (AUROC 0.888), ahead of SpliceAI and SpliceTransformer, and a calibrated consensus does not improve on Pangolin alone. Predictors are run through <a href="https://proto.evodesign.org">Proto</a>, and every number is reproducible from the released data.</span>
     </div>
