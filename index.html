@@ -337,8 +337,8 @@
     <div class="links">
       <a href="#about">About</a>
       <a href="#news">News</a>
-      <a href="#publications">Publications</a>
       <a href="#software">Software</a>
+      <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
       <a href="#awards">Awards</a>
     </div>
@@ -467,6 +467,84 @@
   </section>
 
 
+  <!-- SOFTWARE & BENCHMARKS -->
+  <section id="software">
+    <h2 class="section-title">Software &amp; Benchmarks</h2>
+
+    <div class="pub">
+      <div class="pub-content">
+        <div class="pub-title">ProtDiff-ESM</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Discrete-diffusion protein language model with ESM-2 conditioning and classifier-free guidance. Full training and evaluation pipeline with a leakage-aware ProteinGym harness whose ESM-2 baseline reproduces the public leaderboard (Pearson r = 0.973), plus an honest head-to-head showing where diffusion does and does not yet beat ESM-2 at this model scale.
+        </p>
+        <div class="pub-links">
+          <a href="https://github.com/brhanufen/protdiff-esm">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-content">
+        <div class="pub-title">OracleGap</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Oracle-independence and novelty audit for generative DNA design with Proto (Hie lab, Arc Institute): tests whether sequences optimized against one in-silico oracle survive an independent oracle and remain genuinely novel. Across two independent oracles (Malinois, Enformer; agreement &rho; = 0.865), 93% of gradient-optimized designs transfer to the held-out oracle, finding no evidence of oracle-hacking.
+        </p>
+        <div class="pub-links">
+          <a href="https://github.com/brhanufen/oraclegap">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-content">
+        <div class="pub-title">SpliceConsensus</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Open benchmark of splicing variant-effect predictors against a real experimental assay. On 27,733 exonic variants from the MFASS multiplexed assay (Cheung 2019), Pangolin most accurately predicts splice-disrupting variants (AUROC 0.888), ahead of SpliceAI and SpliceTransformer; a calibrated consensus does not beat Pangolin alone. Predictors are run through Proto, with every number reproducible from the released data.
+        </p>
+        <div class="pub-links">
+          <a href="https://github.com/brhanufen/spliceconsensus">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-content">
+        <div class="pub-title">AbStab</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Leakage-aware benchmark for antibody thermostability (T<sub>m</sub>) prediction built on public data, with grouped splits that prevent near-duplicate sequences from leaking between train and test. On Jain 2017 (n = 137 clinical antibodies), a leakage-free split collapses accuracy from Spearman 0.24 to 0.08&ndash;0.14, exposing how clonal-sequence leakage inflates standard benchmarks.
+        </p>
+        <div class="pub-links">
+          <a href="https://github.com/brhanufen/abstab">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-content">
+        <div class="pub-title">PerturbVAE</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Leakage-aware benchmark for single-cell perturbation-response prediction, quantifying how much measured performance depends on the train/test split design. On the Norman dataset, the conditional VAE predicts unseen double perturbations at &Delta;Pearson 0.748 versus 0.551 for a mean-of-training baseline (131 held-out combinations).
+        </p>
+        <div class="pub-links">
+          <a href="https://github.com/brhanufen/perturbvae">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pub">
+      <div class="pub-content">
+        <div class="pub-title">NativeReady</div>
+        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
+          Open benchmark and sequence-based triage model for native mass spectrometry suitability. The production model reaches cluster-aware ROC-AUC 0.835 &plusmn; 0.029 (n = 635) under homology-controlled cross-validation, and is shipped as a live web tool, a PyPI SDK, and a command-line interface.
+        </p>
+        <div class="pub-links">
+          <a href="https://github.com/brhanufen/nativeready">GitHub</a>
+          <a href="https://www.biorxiv.org/content/10.64898/2026.05.03.722506v1">Preprint</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PUBLICATIONS -->
   <section id="publications">
     <h2 class="section-title">Publications</h2>
@@ -559,84 +637,6 @@
         <div class="pub-links">
           <a href="https://www.biorxiv.org/content/10.64898/2026.05.03.722506v1">Paper</a>
           <a href="https://github.com/brhanufen/nativeready">Code</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOFTWARE & BENCHMARKS -->
-  <section id="software">
-    <h2 class="section-title">Software &amp; Benchmarks</h2>
-
-    <div class="pub">
-      <div class="pub-content">
-        <div class="pub-title">ProtDiff-ESM</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          Discrete-diffusion protein language model with ESM-2 conditioning and classifier-free guidance. Ships the full training and evaluation pipeline plus a leakage-aware ProteinGym benchmark.
-        </p>
-        <div class="pub-links">
-          <a href="https://github.com/brhanufen/protdiff-esm">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-content">
-        <div class="pub-title">OracleGap</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          Oracle-independence and novelty audit for generative DNA design with Proto (Hie lab, Arc Institute): tests whether sequences optimized against one in-silico oracle survive an independent oracle and remain genuinely novel.
-        </p>
-        <div class="pub-links">
-          <a href="https://github.com/brhanufen/oraclegap">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-content">
-        <div class="pub-title">SpliceConsensus</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          Open benchmark of splicing variant-effect predictors against a real experimental assay. On 27,733 exonic variants from the MFASS multiplexed assay (Cheung 2019), Pangolin most accurately predicts splice-disrupting variants (AUROC 0.888), ahead of SpliceAI and SpliceTransformer; a calibrated consensus does not beat Pangolin alone. Predictors are run through Proto, with every number reproducible from the released data.
-        </p>
-        <div class="pub-links">
-          <a href="https://github.com/brhanufen/spliceconsensus">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-content">
-        <div class="pub-title">AbStab</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          Leakage-aware benchmark for antibody thermostability (T<sub>m</sub>) prediction built on public data, with grouped splits that prevent near-duplicate sequences from leaking between train and test.
-        </p>
-        <div class="pub-links">
-          <a href="https://github.com/brhanufen/abstab">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-content">
-        <div class="pub-title">PerturbVAE</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          Leakage-aware benchmark for single-cell perturbation-response prediction, quantifying how much measured performance depends on the train/test split design.
-        </p>
-        <div class="pub-links">
-          <a href="https://github.com/brhanufen/perturbvae">GitHub</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-content">
-        <div class="pub-title">NativeReady</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          Open benchmark and sequence-based triage model for native mass spectrometry suitability, released as a live web tool, a PyPI SDK, and a command-line interface.
-        </p>
-        <div class="pub-links">
-          <a href="https://github.com/brhanufen/nativeready">GitHub</a>
-          <a href="https://www.biorxiv.org/content/10.64898/2026.05.03.722506v1">Preprint</a>
         </div>
       </div>
     </div>
