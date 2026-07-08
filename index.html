@@ -120,6 +120,35 @@
       background: var(--accent);
       color: #fff;
     }
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .hero-stats .stat {
+      flex: 1 1 120px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .hero-stats .stat .num {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1.15;
+    }
+    .hero-stats .stat .lbl {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    @media (max-width: 640px) {
+      .hero-stats .stat { flex: 1 1 140px; text-align: left; }
+    }
 
     /* === SECTIONS === */
     section { padding: 40px 0; }
@@ -336,6 +365,24 @@
         I am also exploring <strong>discrete diffusion models</strong> and conditional generative frameworks
         for protein variant design, combining protein language model representations with fitness-guided generation.
       </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="num">6</div>
+          <div class="lbl">Open-source ML tools &amp; benchmarks shipped</div>
+        </div>
+        <div class="stat">
+          <div class="num">0.978</div>
+          <div class="lbl">Genomic FM average precision (ArboFM)</div>
+        </div>
+        <div class="stat">
+          <div class="num">0.936</div>
+          <div class="lbl">Protein-LM forecast F1 (ESM-2)</div>
+        </div>
+        <div class="stat">
+          <div class="num">5</div>
+          <div class="lbl">Modalities: protein, DNA, single-cell, antibody, MS</div>
+        </div>
+      </div>
       <div class="hero-links">
         <a href="/cdn-cgi/l/email-protection#97f5e5fff6f9e2f1f2f9f5faf2d7f0faf6fefbb9f4f8fa">Email</a>
         <a href="Brhanu_Znabu_CV.pdf">CV</a>
