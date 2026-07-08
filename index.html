@@ -445,76 +445,21 @@
 
     <div class="pub">
       <div class="pub-figure">
-        <img src="papers/figures/flavivirus_grammar_fig1.png" alt="Flavivirus dataset curation and leakage-aware evaluation framework">
+        <img src="papers/figures/flavivirus_grammar_fig1.png" alt="Orthoflavivirus dataset curation and leakage-aware evaluation framework">
       </div>
       <div class="pub-content">
         <span class="pub-status status-prep">In Preparation</span>
-        <div class="pub-title">Deciphering the host-switching grammar of flaviviruses using foundation model embeddings: a leakage-aware evaluation framework</div>
-        <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
+        <div class="pub-title">Deciphering the host-range grammar of orthoflaviviruses using foundation model embeddings: a leakage-aware evaluation framework</div>
+        <div class="pub-authors"><strong>Znabu BF</strong>, Yao Q, Sexton NR.</div>
         <div class="pub-venue">Target: PLOS Computational Biology</div>
         <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          DNABERT-2 embeddings on 3,031 flavivirus genomes. Quantifies 15-percentage-point performance inflation from phylogenetic leakage.
-          Identifies UpA-containing motifs linked to the OAS/RNaseL innate immunity pathway via genome-localized attribution.
+          DNABERT-2 embeddings, k-mer TF-IDF, and composition features on 3,031 orthoflavivirus genomes. Quantifies a 16-percentage-point
+          performance inflation from phylogenetic leakage across all three representations. Genome-localized attribution concentrates
+          discriminative signal in the NS3&ndash;NS5 replication region (65% of arbovirus genomes) and identifies UpA-containing motifs
+          linked to dinucleotide-mediated host restriction.
         </p>
         <div class="pub-links">
           <a href="https://github.com/brhanufen/host-switching-grammar">Code</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-figure">
-        <img src="papers/figures/cross_family_fig1.png" alt="Cross-family dataset construction and genome architecture">
-      </div>
-      <div class="pub-content">
-        <span class="pub-status status-prep">In Preparation</span>
-        <div class="pub-title">Cross-family comparison of host-switching grammar in arthropod-borne viruses reveals convergent evolution of family-specific immune evasion strategies</div>
-        <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
-        <div class="pub-venue">Target: Virus Evolution (Oxford)</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          Cross-family transfer learning across 4 arbovirus families (6,052 genomes, 124,883 windows).
-          Demonstrates host-switching grammar is predominantly family-specific (Jaccard &asymp; 0), supporting convergent evolution.
-        </p>
-        <div class="pub-links">
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-figure">
-        <img src="papers/figures/jvi_fig1.png" alt="Flavivirus host range dataset curation workflow">
-      </div>
-      <div class="pub-content">
-        <span class="pub-status status-prep">In Preparation</span>
-        <div class="pub-title">Genome-scale classification of flavivirus host range using composition and codon-usage signatures</div>
-        <div class="pub-authors"><strong>Znabu BF</strong>, Sexton NR.</div>
-        <div class="pub-venue">Target: Journal of Virology</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          Species-stratified ML classifiers on 1,285 curated flavivirus genomes with 97 compositional features.
-          Insect-specific and dual-host flaviviruses prove near-perfectly separable by genome composition under
-          species-stratified cross-validation (PR-AUC = 1.000), driven by strong CpG suppression in the
-          insect-specific clade rather than any single model's predictive skill.
-        </p>
-        <div class="pub-links">
-          <a href="https://github.com/brhanufen/Orthoflavivirus-host-range-classification">Code</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="pub">
-      <div class="pub-figure">
-        <img src="papers/figures/virapredict_fig1.png" alt="ViraPredict study design and dengue genome distribution">
-      </div>
-      <div class="pub-content">
-        <span class="pub-status status-prep">In Preparation</span>
-        <div class="pub-title">Probabilistic forecasting of dengue virus evolution using multi-modal foundation models and fitness landscape analysis</div>
-        <div class="pub-authors"><strong>Znabu BF</strong>.</div>
-        <div class="pub-venue">Target: TBD</div>
-        <p style="font-size:13px; color:#5a5a5a; margin-bottom:10px; line-height:1.6;">
-          ViraPredict: multi-modal framework combining ESM-2 protein language models (650M params), fitness landscape modeling,
-          and LoRA-fine-tuned DNABERT-2 with temporal embeddings on 29,493 curated dengue genomes across 130 countries.
-        </p>
-        <div class="pub-links">
         </div>
       </div>
     </div>
