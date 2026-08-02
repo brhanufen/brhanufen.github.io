@@ -79,41 +79,54 @@ def trustbinder():
 
 # --------------------------------------------------------------- ProtDiff-ESM
 def protdiff():
-    """Guidance curve: ProteinGym mean rho rising with classifier-free guidance."""
-    d = json.loads(fetch("protdiff-esm", "results/summary.json"))
-    sv = d["scoring_variants"]
-    pts = sorted((float(k.rsplit("_", 1)[1]), v["mean_rho"])
-                 for k, v in sv.items() if k.startswith("option_B_gamma_"))
-    x = [p[0] for p in pts]; y = [p[1] for p in pts]
-    print(f"    gamma {x} -> rho {[round(v,3) for v in y]}")
+    """ESMFold pLDDT for random, generated and natural sequences.
+
+    The repo's headline is an honest negative result: generated sequences sit
+    beside the random baseline and far below natural. An earlier version of this
+    thumbnail plotted the guidance sweep, which read as a success curve and
+    inverted the finding.
+    """
+    d = json.loads(fetch("protdiff-esm", "results/foldability.json"))
+    groups = [("random", d["random"], MUTED),
+              ("generated", d["generated"], ORANGE),
+              ("natural", d["natural"], BLUE)]
+    print("    " + "  ".join(f"{k} {np.mean(v):.1f}" for k, v, _ in groups))
 
     f, ax = fig()
-    ax.plot(x, y, color=BLUE, lw=7, solid_capstyle="round", zorder=2)
-    ax.scatter(x, y, s=340, color=BLUE, zorder=3, edgecolor=SURFACE, lw=4)
-    ax.scatter([x[-1]], [y[-1]], s=520, color=ORANGE, zorder=4, edgecolor=SURFACE, lw=4)
-    pad = (max(y) - min(y)) * 0.35
-    ax.set_ylim(min(y) - pad, max(y) + pad)
-    ax.set_xlim(min(x) - 0.35, max(x) + 0.35)
+    rng = np.random.default_rng(0)
+    for i, (k, v, c) in enumerate(groups):
+        v = np.asarray(v, dtype=float)
+        ax.scatter(np.full(len(v), i) + rng.uniform(-0.19, 0.19, len(v)), v,
+                   s=85, color=c, alpha=0.5, lw=0)
+        ax.plot([i - 0.30, i + 0.30], [v.mean()] * 2, color=c, lw=6,
+                solid_capstyle="round", zorder=5)
+    ax.set_xlim(-0.6, len(groups) - 0.4)
     save(f, "sw_protdiff")
 
 
 # --------------------------------------------------------------- EnhancerDiff
 def enhancerdiff():
-    """Strip plot: per-design GC content for each of the three cell types."""
-    d = json.loads(fetch("enhancerdiff", "webdemo/designs.json"))
-    keys = list(d)[:3]
-    groups = {k: [float(x["gc"]) for x in d[k]["designs"]] for k in keys}
-    print(f"    {[(k, len(groups[k]), round(float(np.median(groups[k])), 3)) for k in keys]}")
+    """Guiding-oracle score vs independent-oracle score, per cell type.
+
+    The repo's own evaluation is the point: designs score well on the oracle
+    that steered them and roughly ten times lower on the independent one, with
+    29-40%% transferring at the 0.9 threshold. An earlier version plotted GC
+    content, which said nothing about whether the designs hold up.
+    """
+    rows = []
+    for ct in (0, 1, 2):
+        e = json.loads(fetch("enhancerdiff", f"results/eval_ct{ct}.json"))
+        rows.append((e["independent_oracle_score"]["mean"],
+                     e["target_oracle_score"]["mean"]))
+    print(f"    independent vs target: {[(round(i,3), round(t,3)) for i, t in rows]}")
 
     f, ax = fig()
-    rng = np.random.default_rng(0)
-    for i, (k, c) in enumerate(zip(keys, [BLUE, ORANGE, AQUA])):
-        v = np.array(groups[k])
-        ax.scatter(v, np.full(len(v), -i) + rng.uniform(-0.17, 0.17, len(v)),
-                   s=95, color=c, alpha=0.55, lw=0)
-        ax.plot([np.median(v)] * 2, [-i - 0.20, -i + 0.20], color=c, lw=5,
-                solid_capstyle="round", alpha=0.95, zorder=5)
-    ax.set_ylim(-len(keys) + 0.45, 0.55)
+    for i, (ind, tgt) in enumerate(rows):
+        ax.plot([ind, tgt], [-i, -i], color=FAINT, lw=8, solid_capstyle="round", zorder=1)
+        ax.scatter([tgt], [-i], s=460, color=ORANGE, zorder=3, edgecolor=SURFACE, lw=4)
+        ax.scatter([ind], [-i], s=460, color=BLUE, zorder=3, edgecolor=SURFACE, lw=4)
+    ax.set_xlim(-0.05, max(t for _, t in rows) * 1.12)
+    ax.set_ylim(-len(rows) + 0.45, 0.55)
     save(f, "sw_enhancerdiff")
 
 
@@ -125,15 +138,17 @@ def oraclegap():
     mal = np.array([float(r["malinois_k562"]) for r in recs])
     enf = np.array([float(r["enformer_k562"]) for r in recs])
     grp = np.array([r.get("group") for r in recs])
-    keep = (grp == "design") | (grp == "natural_active")
-    mal, enf, grp = mal[keep], enf[keep], grp[keep]
     isdes = grp == "design"
+    from scipy.stats import rankdata, spearmanr
+    print(f"    spearman over all {len(mal)} records = {spearmanr(mal, enf).statistic:.4f}"
+          f"  (repo summary: 0.8649)")
+    mal, enf = rankdata(mal), rankdata(enf)
     print(f"    n={len(mal)} ({isdes.sum()} designs, {(~isdes).sum()} natural-active)"
           f"  pearson r={np.corrcoef(mal, enf)[0,1]:.3f}")
 
     f, ax = fig()
-    ax.scatter(mal[~isdes], enf[~isdes], s=110, color=AQUA, alpha=0.5, lw=0, zorder=1)
-    ax.scatter(mal[isdes], enf[isdes], s=130, color=BLUE, alpha=0.65, lw=0, zorder=2)
+    ax.scatter(mal[~isdes], enf[~isdes], s=70, color=AQUA, alpha=0.45, lw=0, zorder=1)
+    ax.scatter(mal[isdes], enf[isdes], s=95, color=BLUE, alpha=0.7, lw=0, zorder=2)
     m = (mal.max() - mal.min()) * 0.05
     ax.set_xlim(mal.min() - m, mal.max() + m)
     m2 = (enf.max() - enf.min()) * 0.05
@@ -163,22 +178,24 @@ def spliceconsensus():
 
 # --------------------------------------------------------------------- AbStab
 def abstab():
-    """Grouped bars: accuracy under a random split vs a leakage-free split."""
-    d = json.loads(fetch("abstab", "results/eval_jain.json"))
-    sp = d["splits"]
-    models = [k for k in sp if isinstance(sp[k], dict) and "random" in sp[k]]
-    rnd = [sp[m]["random"]["mean"] for m in models]
-    clu = [sp[m]["cluster_holdout"]["mean"] for m in models]
-    print(f"    models {models}  random {[round(v,3) for v in rnd]}  grouped {[round(v,3) for v in clu]}")
+    """Random split vs leakage-free split, for the two protein language models.
+
+    The site's "0.24 -> 0.08-0.14" is ESM-2 650M and AntiBERTy, not the ridge /
+    kNN probes an earlier version of this thumbnail plotted.
+    """
+    ev = {t: json.loads(fetch("abstab", f"results/eval_emb_{t}.json"))
+          for t in ("esm2_650m", "antiberty")}
+    rnd = [ev[t]["random"]["mean"] for t in ev]
+    clu = [ev[t]["cluster_holdout"]["mean"] for t in ev]
+    print(f"    {[(t, round(ev[t]['random']['mean'],3), round(ev[t]['cluster_holdout']['mean'],3)) for t in ev]}")
 
     f, ax = fig()
-    x = np.arange(len(models)); w = 0.34
+    x = np.arange(len(ev)); w = 0.34
     ax.bar(x - w / 2 - 0.012, rnd, w, color=BLUE, lw=0, zorder=2)
     ax.bar(x + w / 2 + 0.012, clu, w, color=ORANGE, lw=0, zorder=2)
     ax.axhline(0, color=INK, lw=3, zorder=3)
-    hi = max(max(rnd), max(clu)); lo = min(min(rnd), min(clu))
-    ax.set_ylim(lo - abs(lo) * 0.5 - 0.02, hi + abs(hi) * 0.35 + 0.02)
-    ax.set_xlim(-0.6, len(models) - 0.4)
+    ax.set_ylim(0, max(rnd) * 1.25)
+    ax.set_xlim(-0.6, len(ev) - 0.4)
     save(f, "sw_abstab")
 
 
@@ -208,7 +225,7 @@ def nativeready():
     raw = fetch("nativeready", "model/v3_robust_oof_predictions.npz")
     z = np.load(io.BytesIO(raw), allow_pickle=True)
     print(f"    npz keys: {list(z.keys())}")
-    pk = next(k for k in z if any(s in k.lower() for s in ("prob", "pred", "score")))
+    pk = "v4_proba"          # V4 combined = the production model in the repo README
     yk = next((k for k in z if any(s in k.lower() for s in ("y", "true", "label"))), None)
     p = np.asarray(z[pk], dtype=float).ravel()
     y = np.asarray(z[yk]).ravel() if yk else None
