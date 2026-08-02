@@ -430,10 +430,11 @@
       <h3>Genomic foundation models</h3>
       <p>
         I adapt pre-trained sequence models to viral genomes and ask what they have actually learned.
-        ArboFM applies continued masked-language-model pre-training to DNABERT-2 over 120K+ arbovirus genome
-        windows to predict epidemic emergence, and genome-localized attribution traces the discriminative
-        signal to the NS3&ndash;NS5 replication region and to UpA-containing motifs linked to
-        dinucleotide-mediated host restriction.
+        ArboFM applies continued masked-language-model pre-training to DNABERT-2 over 120K+ windows from
+        9,299 arbovirus genomes, to predict epidemic emergence. A separate study asks a different question of
+        3,031 orthoflavivirus genomes, host range rather than emergence, and uses genome-localized attribution
+        to trace the discriminative signal to the NS3&ndash;NS5 replication region and to UpA-containing motifs
+        linked to dinucleotide-mediated host restriction.
       </p>
     </div>
 
@@ -443,8 +444,10 @@
         I build discrete-diffusion models that generate sequence under conditioning rather than scoring it.
         ProtDiff-ESM couples masked-diffusion sampling with ESM-2 fitness conditioning and classifier-free
         guidance for protein variants; EnhancerDiff re-points the same machinery from protein to regulatory
-        DNA to design cell-type-specific 200 bp enhancers. Both are evaluated against independent oracles
-        rather than the objective they were optimized against.
+        DNA to design cell-type-specific 200 bp enhancers. Each is checked against something other than the
+        objective it was trained on, and the answer is reported as it came out: EnhancerDiff's designs transfer
+        to an independent oracle for two of three cell types, and ProtDiff-ESM does not beat ESM-2 at this
+        model scale.
       </p>
     </div>
 
@@ -457,7 +460,7 @@
         performance by 16 percentage points, a leakage-free split collapses antibody thermostability
         prediction from Spearman 0.24 to 0.08&ndash;0.14, two structure oracles agree on one binder target and
         not on another, and 19% of splice-disrupting variants are missed by every published predictor.
-        Eight of these evaluations are released as open, reproducible packages.
+        Every tool named here ships as an open, reproducible package.
       </p>
     </div>
   </section>
