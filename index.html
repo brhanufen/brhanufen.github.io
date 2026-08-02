@@ -489,7 +489,7 @@
       <div class="pub-content">
         <div class="pub-title">ProtDiff-ESM</div>
         <p class="pub-desc">
-          Discrete-diffusion protein language model with ESM-2 conditioning and classifier-free guidance. Full training and evaluation pipeline with a leakage-aware ProteinGym harness whose ESM-2 baseline reproduces the public leaderboard (Pearson r = 0.973), plus a head-to-head evaluation quantifying where diffusion does and does not yet beat ESM-2 at this model scale.
+          Discrete-diffusion protein language model with ESM-2 conditioning and classifier-free guidance. Full training and evaluation pipeline with a leakage-aware ProteinGym harness whose ESM-2 baseline reproduces the public leaderboard (Pearson r = 0.973), An honest negative result at this scale: the model does not beat ESM-2 at variant-effect prediction, held-out zero-shot correlation is near zero, and generated sequences fold no better than random (mean ESMFold pLDDT 38.8, against 33.3 for random and 59.1 for natural).
         </p>
         <div class="pub-links">
           <a href="https://github.com/brhanufen/protdiff-esm">GitHub</a>
@@ -504,7 +504,7 @@
       <div class="pub-content">
         <div class="pub-title">EnhancerDiff</div>
         <p class="pub-desc">
-          Discrete-diffusion generator for cell-type-specific regulatory DNA. Learns p(DNA | cell type) over 200 bp sequences with measured activity from the Gosai 2024 MPRA, then samples novel enhancers for a chosen cell type (K562, HepG2, SK-N-SH) under classifier-free guidance. Designs are scored by the real Malinois and Enformer oracles and checked for novelty rather than assumed correct. Re-points the diffusion machinery from ProtDiff-ESM from protein to DNA; generated design galleries and their oracle evaluations are committed, so the outputs are inspectable without retraining.
+          Discrete-diffusion generator for cell-type-specific regulatory DNA. Learns p(DNA | cell type) over 200 bp sequences with measured activity from the Gosai 2024 MPRA, then samples novel enhancers for a chosen cell type (K562, HepG2, SK-N-SH) under classifier-free guidance. Designs are scored by the real Malinois and Enformer oracles and checked for novelty rather than assumed correct. The independence audit localizes where the model games its target: the K562 and HepG2 galleries sit within noise of zero, while SK-N-SH does not. Re-points the diffusion machinery from ProtDiff-ESM from protein to DNA; generated design galleries and their oracle evaluations are committed, so the outputs are inspectable without retraining.
         </p>
         <div class="pub-links">
           <a href="https://github.com/brhanufen/enhancerdiff">GitHub</a>
@@ -534,7 +534,7 @@
       <div class="pub-content">
         <div class="pub-title">SpliceConsensus</div>
         <p class="pub-desc">
-          Reproducible benchmark harness scoring five splicing variant-effect predictors against the MFASS experimental assay (27,733 variants), with distance-to-splice-site stratification and a calibrated consensus baseline. Every headline number regenerates from the committed data with one script, no GPU or large download required. Pangolin ranks first (AUROC 0.888); see the preprint for the shared exon-interior blind spot.
+          Reproducible benchmark harness scoring five splicing variant-effect predictors against the MFASS experimental assay (27,733 variants), with distance-to-splice-site stratification and a calibrated consensus baseline. Every headline number regenerates from the committed data with one script, no GPU or large download required. Pangolin ranks first on both AUROC (0.888) and average precision (0.421); see the preprint for the shared exon-interior blind spot.
         </p>
         <div class="pub-links">
           <a href="https://github.com/brhanufen/spliceconsensus">GitHub</a>
@@ -565,7 +565,7 @@
       <div class="pub-content">
         <div class="pub-title">PerturbVAE</div>
         <p class="pub-desc">
-          Leakage-aware benchmark for single-cell perturbation-response prediction, quantifying how much measured performance depends on the train/test split design. On the Norman dataset, the conditional VAE predicts unseen double perturbations at &Delta;Pearson 0.748 versus 0.551 for a mean-of-training baseline (131 held-out combinations).
+          Leakage-aware benchmark for single-cell perturbation-response prediction, quantifying how much measured performance depends on the train/test split design. On the Norman dataset the conditional VAE beats a mean-of-training baseline only on the combinatorial split, predicting unseen double perturbations at &Delta;Pearson 0.748 versus 0.551 (131 held-out combinations). Under random and function-grouped splits the baseline wins (0.522 versus 0.616, and 0.257 versus 0.412), which is the point of the benchmark.
         </p>
         <div class="pub-links">
           <a href="https://github.com/brhanufen/perturbvae">GitHub</a>
