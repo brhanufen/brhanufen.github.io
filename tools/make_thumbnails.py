@@ -106,27 +106,35 @@ def protdiff():
 
 # --------------------------------------------------------------- EnhancerDiff
 def enhancerdiff():
-    """Guiding-oracle score vs independent-oracle score, per cell type.
+    """Independence gap by cell type, against a zero reference.
 
-    The repo's own evaluation is the point: designs score well on the oracle
-    that steered them and roughly ten times lower on the independent one, with
-    29-40%% transferring at the 0.9 threshold. An earlier version plotted GC
-    content, which said nothing about whether the designs hold up.
+    The gap is target percentile minus independent percentile: the report's
+    oracle-hacking signal, where lower is better and zero means the design
+    transfers. K562 (+0.021) and HepG2 (-0.004) sit within noise of zero;
+    SK-N-SH (+0.217) is where the model games its target oracle.
+
+    Two earlier versions of this thumbnail were wrong: GC content said nothing
+    about transfer, and raw target-vs-independent scores compared two oracles on
+    incompatible scales, which made transfer look far worse than it is.
     """
-    rows = []
+    gaps = []
     for ct in (0, 1, 2):
         e = json.loads(fetch("enhancerdiff", f"results/eval_ct{ct}.json"))
-        rows.append((e["independent_oracle_score"]["mean"],
-                     e["target_oracle_score"]["mean"]))
-    print(f"    independent vs target: {[(round(i,3), round(t,3)) for i, t in rows]}")
+        gaps.append(e["independence"]["mean_gap"])
+    print(f"    independence gaps: {[round(x, 4) for x in gaps]}")
 
     f, ax = fig()
-    for i, (ind, tgt) in enumerate(rows):
-        ax.plot([ind, tgt], [-i, -i], color=FAINT, lw=8, solid_capstyle="round", zorder=1)
-        ax.scatter([tgt], [-i], s=460, color=ORANGE, zorder=3, edgecolor=SURFACE, lw=4)
-        ax.scatter([ind], [-i], s=460, color=BLUE, zorder=3, edgecolor=SURFACE, lw=4)
-    ax.set_xlim(-0.05, max(t for _, t in rows) * 1.12)
-    ax.set_ylim(-len(rows) + 0.45, 0.55)
+    lim = max(abs(min(gaps)), max(gaps)) * 1.45
+    ax.axvline(0, color=MUTED, lw=4, zorder=1)
+    for i, gp in enumerate(gaps):
+        hot = gp > 0.1                       # clearly away from zero
+        ax.plot([0, gp], [-i, -i], color=ORANGE if hot else FAINT, lw=9,
+                solid_capstyle="round", zorder=2)
+        ax.scatter([gp], [-i], s=520 if hot else 400,
+                   color=ORANGE if hot else BLUE, zorder=3,
+                   edgecolor=SURFACE, lw=4)
+    ax.set_xlim(-lim * 0.35, lim)
+    ax.set_ylim(-len(gaps) + 0.45, 0.55)
     save(f, "sw_enhancerdiff")
 
 
