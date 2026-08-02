@@ -1,0 +1,163 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tabularx}
+
+\definecolor{linkblue}{RGB}{10,60,150}
+\hypersetup{colorlinks=true, urlcolor=linkblue, linkcolor=linkblue}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+\titleformat{\section}{\large\bfseries\scshape}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{5pt}{3pt}
+
+\newcommand{\entry}[4]{%
+  \textbf{#1} \hfill #2 \\
+  \textit{#3} \hfill \textit{#4} \\[1pt]
+}
+
+\newcommand{\entrysingle}[2]{%
+  \textbf{#1} \hfill \textit{#2} \\[2pt]
+}
+
+\begin{document}
+
+% ===== HEADER =====
+\begin{center}
+  {\LARGE \textbf{Brhanu Fentaw Znabu}} \\[4pt]
+  \href{mailto:bfentaw2@huskers.unl.edu}{bfentaw2@huskers.unl.edu} $\cdot$
+  \href{mailto:brhanufenbme@gmail.com}{brhanufenbme@gmail.com} $\cdot$
+  531-254-0990 $\cdot$ Lincoln, NE \\[2pt]
+  \href{https://brhanufen.github.io}{brhanufen.github.io} $\cdot$
+  \href{https://linkedin.com/in/brhanu-fentaw-znabu-23115619a}{LinkedIn} $\cdot$
+  \href{https://github.com/brhanufen}{GitHub}
+\end{center}
+
+% ===== RESEARCH INTERESTS =====
+\section{Research Interests}
+My research develops deep learning foundation and generative models for large-scale biological sequence analysis across genomes and proteins, with a focus on domain-adaptive pre-training, generative design, and rigorous leakage-aware evaluation. I build systems end to end, from data curation through HPC training to open-source release, and apply them to predicting evolutionary trajectories and protein function.
+
+% ===== EDUCATION =====
+\section{Education}
+
+\entry{Ph.D. Biomedical Engineering}{Aug 2024 -- Expected May 2029}
+{University of Nebraska--Lincoln}{Lincoln, NE}
+\begin{itemize}[leftmargin=1.2em, topsep=0pt, itemsep=1pt, parsep=0pt]
+  \item Advisors: Nicole R. Sexton, PhD (Nebraska Center for Virology) $|$ Qiuming Yao, PhD (School of Computing)
+\end{itemize}
+\vspace{1pt}
+
+\entry{M.Sc. Biomedical Science and Engineering}{2021 -- 2024}
+{Gwangju Institute of Science and Technology (GIST)}{South Korea}
+\begin{itemize}[leftmargin=1.2em, topsep=0pt, itemsep=1pt, parsep=0pt]
+  \item GPA: 4.0/4.5 $|$ Advisor: Euiheon Chung, PhD
+  \item Thesis: Deep behavioral phenotyping of diabetic neuropathy mouse model using open-field test
+\end{itemize}
+\vspace{1pt}
+
+\entry{B.Sc. Biomedical Engineering}{2014 -- 2018}
+{Jimma University}{Ethiopia}
+\begin{itemize}[leftmargin=1.2em, topsep=0pt, itemsep=1pt, parsep=0pt]
+  \item GPA: 3.64/4.0 $|$ Graduated with Distinction (Ranked 4th of 180)
+\end{itemize}
+
+% ===== RESEARCH EXPERIENCE =====
+\section{Research Experience}
+
+\entry{PhD Researcher}{Aug 2024 -- Present}
+{Sexton Lab, University of Nebraska--Lincoln}{Lincoln, NE}
+\begin{itemize}[leftmargin=1.2em, topsep=0pt, itemsep=1pt, parsep=0pt]
+  \item Built ArboFM, a domain-adapted transformer model via continued masked language model pre-training of DNABERT-2 (117M params) on 120K+ sequence windows across 362 species; achieved AP = 0.978 under species-grouped cross-validation preventing data leakage.
+  \item Designed a leakage-aware evaluation framework quantifying 16-pp performance inflation from phylogenetic data leakage in cross-validation; applied gradient-based attribution and 6-mer enrichment analysis for model interpretability.
+  \item Built a cross-domain transfer learning matrix across four biological families (6,052 sequences, 124K+ windows); demonstrated that learned representations are domain-specific (Jaccard $\approx$ 0), informing transfer learning strategy design.
+  \item Performed retrospective temporal validation demonstrating the model detects distribution shifts in held-out future data, including within-class lineage discrimination (CLES = 0.898).
+  \item Developed ViraPredict, a multi-modal forecasting framework integrating fitness landscape modeling, ESM-2 (650M params) zero-shot mutation scoring (F1 = 0.936), and LoRA-fine-tuned DNABERT-2 with temporal embeddings on 29,493 curated sequences across 130 countries.
+\end{itemize}
+\vspace{1pt}
+
+\entry{Research Assistant}{Mar 2021 -- Jun 2024}
+{Neurophotonics Lab, GIST}{South Korea}
+\begin{itemize}[leftmargin=1.2em, topsep=0pt, itemsep=1pt, parsep=0pt]
+  \item Developed unsupervised autoregressive and Hidden Markov models for temporal sequence modeling and state transition detection in behavioral time-series data.
+  \item Benchmarked deep learning-based 3D pose estimation (DeepLabCut) against traditional 2D analysis using logistic regression on multi-dimensional behavioral features.
+\end{itemize}
+
+% ===== OPEN-SOURCE PROJECTS =====
+\section{Open-Source Projects}
+
+\begin{itemize}[leftmargin=1.2em, topsep=2pt, itemsep=2pt, parsep=0pt]
+  \item \textbf{TrustBinder} \href{https://github.com/brhanufen/trustbinder}{(github.com/brhanufen/trustbinder)}: Dual-oracle audit for de novo binder design, testing whether the score used to select generated binders survives an independent structure oracle. Boltz-2 and AlphaFold2 are uncorrelated on PD-L1 (r = 0.08, 100 designs) but strongly correlated on EGFR (r = 0.64), showing oracle concordance is target-dependent; on EGFR, where 55 of 402 designs have measured binding, gating on concordance lowers binder enrichment rather than raising it.
+  \item \textbf{ProtDiff-ESM} \href{https://github.com/brhanufen/protdiff-esm}{(github.com/brhanufen/protdiff-esm)}: Discrete-diffusion protein language model conditioned on frozen ESM-2 with classifier-free guidance toward a fitness target; training and reverse-diffusion sampler built from scratch, evaluated on ProteinGym with a leakage-aware harness whose ESM-2 baseline reproduces the public leaderboard (Pearson r = 0.973).
+  \item \textbf{EnhancerDiff} \href{https://github.com/brhanufen/enhancerdiff}{(github.com/brhanufen/enhancerdiff)}: Discrete-diffusion model that designs cell-type-specific 200 bp enhancers (K562, HepG2, SK-N-SH) from the Gosai 2024 MPRA, validated against the Malinois and Enformer oracles.
+  \item \textbf{OracleGap} \href{https://github.com/brhanufen/oraclegap}{(github.com/brhanufen/oraclegap)}: Oracle-independence and novelty audit for generative DNA design with Proto (Arc Institute); 93\% of gradient-optimized designs transfer to an independent oracle (agreement $\rho$ = 0.865) with no oracle-hacking detected.
+  \item \textbf{SpliceConsensus} \href{https://github.com/brhanufen/spliceconsensus}{(github.com/brhanufen/spliceconsensus)}: Reproducible benchmark of splicing variant-effect predictors against the MFASS experimental assay (27,733 variants); Pangolin ranks best (AUROC 0.888) across five predictors, while 19\% of splice-disrupting variants are missed by every tool, concentrated in the exon interior.
+  \item \textbf{AbStab} \href{https://github.com/brhanufen/abstab}{(github.com/brhanufen/abstab)}: Leakage-aware benchmark for antibody thermostability prediction; showed random splits overstate generalization to novel antibodies and that a general PLM (ESM-2) relies on clonal leakage more than an antibody-specific model (AntiBERTy).
+  \item \textbf{PerturbVAE} \href{https://github.com/brhanufen/perturbvae}{(github.com/brhanufen/perturbvae)}: Conditional VAE for single-cell perturbation-response prediction, evaluated under random, function-grouped, and combinatorial held-out splits on Norman 2019 and Replogle 2022 Perturb-seq data.
+  \item \textbf{NativeReady} \href{https://github.com/brhanufen/nativeready}{(github.com/brhanufen/nativeready)}: Sequence-based triage model and open benchmark for native mass spectrometry suitability (cluster-aware ROC-AUC 0.835 $\pm$ 0.029, n = 635); shipped as a web tool, PyPI SDK, and CLI.
+\end{itemize}
+
+% ===== PUBLICATIONS =====
+\section{Publications}
+
+\begin{enumerate}[leftmargin=1.5em, topsep=2pt, itemsep=2pt, parsep=0pt]
+  \item Ashiquzzaman A*, Lee E*, \textbf{Znabu BF*}, Sakib AN, Chung G, Kim SS, Kim YR, Kwon H-S, Chung E. MoSeq based 3D behavioral profiling uncovers neuropathic behavior changes in diabetic mouse model. \textit{Scientific Reports} 15, 15114 (2025)
+
+  \item \textbf{Znabu BF}, Atif Z. Interpretable deep learning-based multi-omics integration for prognosis in hepatocellular carcinoma. \textit{bioRxiv}. 2026. \href{https://www.biorxiv.org/content/10.64898/2026.04.01.715980v1}{DOI: 10.64898/2026.04.01.715980v1} (Preprint)
+
+  \item \textbf{Znabu BF}, Atif Z. NativeReady: an open benchmark and sequence-based triage model for native mass spectrometry suitability. \textit{bioRxiv}. 2026. \href{https://www.biorxiv.org/content/10.64898/2026.05.03.722506v1}{DOI: 10.64898/2026.05.03.722506v1} (Preprint)
+
+  \item \textbf{Znabu BF}, Atif Z, Devkota P, Alemu RH, K.C. J. A reproducible MFASS benchmark of splice-disruption predictors reveals a shared exon-interior blind spot. \textit{bioRxiv}. 2026. \href{https://www.biorxiv.org/content/10.64898/2026.07.21.739871v1}{DOI: 10.64898/2026.07.21.739871} (Preprint)
+
+  \item \textbf{Znabu BF}, Sexton NR. A genomic foundation model for predicting arbovirus epidemic emergence across RNA virus families. \textit{Bioinformatics} (In preparation)
+
+  \item \textbf{Znabu BF}, Yao Q, Sexton NR. Deciphering the host-range grammar of orthoflaviviruses using foundation model embeddings: a leakage-aware evaluation framework. \textit{PLOS Computational Biology} (In preparation)
+\end{enumerate}
+
+% ===== PRESENTATIONS =====
+\section{Conference Presentations}
+
+\begin{itemize}[leftmargin=1.2em, topsep=2pt, itemsep=2pt, parsep=0pt]
+  \item \textbf{ISMB 2026} (MLCSB COSI), poster accepted: Investigating Host-Range Determinants of Flaviviruses Using Foundation Model Embeddings: A Leakage-Aware Evaluation Framework. Washington, DC (2026)
+  \item \textbf{Annual Engineering Symposium}, UNL, poster: Deciphering the host-range grammar of orthoflaviviruses using foundation model embeddings (2026)
+  \item \textbf{NCV Annual Virology Symposium}, poster: Cracking the viral code: codon usage and CpG patterns predict host specificity (2025)
+\end{itemize}
+
+% ===== TECHNICAL SKILLS =====
+\section{Technical Skills}
+
+\textbf{Programming:} Python, R, C++, MATLAB \quad $|$ \quad \textbf{ML/DL:} PyTorch, scikit-learn, XGBoost, Hugging Face Transformers, DNABERT-2, ESM-2, AntiBERTy \quad $|$ \quad \textbf{Infrastructure:} GPU (V100), HPC (Slurm), Git/GitHub \\[3pt]
+\textbf{Methods:} Foundation model pre-training (MLM), discrete diffusion, classifier-free guidance, variational autoencoders, LoRA fine-tuning, transfer learning, leakage-aware evaluation, gradient attribution, zero-shot prediction, PCA, UMAP \quad $|$ \quad \textbf{Data:} NCBI GenBank, GISAID, ProteinGym, TCGA, GEO, Biopython, ESMFold, IEDB
+
+% ===== ACADEMIC SERVICE =====
+\section{Academic Service}
+
+\entry{Poster Judge}{April 16, 2026}
+{School of Biological Sciences Undergraduate Research Symposium, UNL}{Lincoln, NE}
+
+% ===== TEACHING =====
+\section{Teaching Experience}
+
+\entry{Lecturer}{Aug 2019 -- Jan 2021}
+{Hawassa University}{Ethiopia}
+\begin{itemize}[leftmargin=1.2em, topsep=0pt, itemsep=1pt, parsep=0pt]
+  \item Taught Biomechanics, Biomaterials, and Biophysics to undergraduate biomedical engineering students.
+\end{itemize}
+
+% ===== AWARDS =====
+\section{Awards \& Grants}
+
+\begin{itemize}[leftmargin=1.2em, topsep=2pt, itemsep=2pt, parsep=0pt]
+  \item Nominated by UNL as one of four students for the Google PhD Fellowship 2026 in AI for Health
+  \item Korean Government Scholarship for Master's Study, GIST (2020)
+  \item Research Grant for Colostomy Device Development, Hawassa University (2020)
+  \item Best B.Sc. Thesis Award, Ethiopian Science, Technology, and Innovation (2018)
+\end{itemize}
+
+\end{document}
