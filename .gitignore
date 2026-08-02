@@ -9,3 +9,12 @@
 # Third-party papers downloaded for reading; never publish these
 *.full.pdf
 2022.*.pdf
+
+# Reference preprint (PLAID) kept locally for reading; never publish
+preprint.pdf
+
+# Agent image-preview scratch
+_view_*.png
+
+# Superseded thumbnail backup (kept locally, not served)
+papers/figures/sw_trustbinder_waffle_backup.png
