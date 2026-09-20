@@ -42,7 +42,7 @@
 
 % ===== RESEARCH INTERESTS =====
 \section{Research Interests}
-My research develops deep learning foundation and generative models for large-scale biological sequence analysis across genomes and proteins, with a focus on domain-adaptive pre-training, generative design, and rigorous leakage-aware evaluation. I build systems end to end, from data curation through HPC training to open-source release, and apply them to predicting evolutionary trajectories and protein function.
+My research develops deep learning foundation models, large language models, and generative models for large-scale biological sequence analysis across genomes and proteins, with a focus on domain-adaptive pre-training, generative design, autonomous LLM agents for scientific analysis, and rigorous leakage-aware evaluation. I build systems end to end, from data curation through HPC training to open-source release, and apply them to predicting evolutionary trajectories and protein function.
 
 % ===== EDUCATION =====
 \section{Education}
@@ -93,6 +93,7 @@ My research develops deep learning foundation and generative models for large-sc
 \section{Open-Source Projects}
 
 \begin{itemize}[leftmargin=1.2em, topsep=2pt, itemsep=2pt, parsep=0pt]
+  \item \textbf{RNA-seq Agent} \href{https://github.com/brhanufen/rnaseq-agent}{(github.com/brhanufen/rnaseq-agent)}: Autonomous LLM agent that plans, writes, and runs Python for bulk RNA-seq analysis, self-corrects on errors, and returns grounded answers, shipped with a reliability benchmark and technical report (100\% task success and answer grounding, 3/3 error recovery on GSE52778; median 3 steps per task). Also documents that "how many genes are differentially expressed" has no single ground truth, ranging from 552 to $\sim$10,000 across pipelines.
   \item \textbf{TrustBinder} \href{https://github.com/brhanufen/trustbinder}{(github.com/brhanufen/trustbinder)}: Dual-oracle audit for de novo binder design, testing whether the score used to select generated binders survives an independent structure oracle. Boltz-2 and AlphaFold2 are uncorrelated on PD-L1 (r = 0.08, 100 designs) but strongly correlated on EGFR (r = 0.64), showing oracle concordance is target-dependent; on EGFR, where 55 of 402 designs have measured binding, gating on concordance lowers binder enrichment rather than raising it.
   \item \textbf{ProtDiff-ESM} \href{https://github.com/brhanufen/protdiff-esm}{(github.com/brhanufen/protdiff-esm)}: Discrete-diffusion protein language model conditioned on frozen ESM-2 with classifier-free guidance toward a fitness target; training and reverse-diffusion sampler built from scratch, evaluated on ProteinGym with a leakage-aware harness whose ESM-2 baseline reproduces the public leaderboard (Pearson r = 0.973).
   \item \textbf{EnhancerDiff} \href{https://github.com/brhanufen/enhancerdiff}{(github.com/brhanufen/enhancerdiff)}: Discrete-diffusion model that designs cell-type-specific 200 bp enhancers (K562, HepG2, SK-N-SH) from the Gosai 2024 MPRA, validated against the Malinois and Enformer oracles.
@@ -124,22 +125,14 @@ My research develops deep learning foundation and generative models for large-sc
 \section{Conference Presentations}
 
 \begin{itemize}[leftmargin=1.2em, topsep=2pt, itemsep=2pt, parsep=0pt]
-  \item \textbf{ISMB 2026} (MLCSB COSI), poster accepted: Investigating Host-Range Determinants of Flaviviruses Using Foundation Model Embeddings: A Leakage-Aware Evaluation Framework. Washington, DC (2026)
-  \item \textbf{Annual Engineering Symposium}, UNL, poster: Deciphering the host-range grammar of orthoflaviviruses using foundation model embeddings (2026)
-  \item \textbf{NCV Annual Virology Symposium}, poster: Cracking the viral code: codon usage and CpG patterns predict host specificity (2025)
+  \item \textbf{ISMB 2026} (MLCSB COSI), poster accepted: Investigating Host-Range Determinants of Flaviviruses Using Foundation Model Embeddings: A Leakage-Aware Evaluation Framework. Washington, DC (2026). Plus symposium posters at UNL (2026) and the Nebraska Center for Virology (2025).
 \end{itemize}
 
 % ===== TECHNICAL SKILLS =====
 \section{Technical Skills}
 
-\textbf{Programming:} Python, R, C++, MATLAB \quad $|$ \quad \textbf{ML/DL:} PyTorch, scikit-learn, XGBoost, Hugging Face Transformers, DNABERT-2, ESM-2, AntiBERTy \quad $|$ \quad \textbf{Infrastructure:} GPU (V100), HPC (Slurm), Git/GitHub \\[3pt]
+\textbf{Programming:} Python, R, C++, MATLAB \quad $|$ \quad \textbf{ML/DL:} PyTorch, scikit-learn, XGBoost, Hugging Face Transformers, DNABERT-2, ESM-2, AntiBERTy \quad $|$ \quad \textbf{Infrastructure:} GPU (H100/H200), HPC (Slurm), Git/GitHub \\[3pt]
 \textbf{Methods:} Foundation model pre-training (MLM), discrete diffusion, classifier-free guidance, variational autoencoders, LoRA fine-tuning, transfer learning, leakage-aware evaluation, gradient attribution, zero-shot prediction, PCA, UMAP \quad $|$ \quad \textbf{Data:} NCBI GenBank, GISAID, ProteinGym, TCGA, GEO, Biopython, ESMFold, IEDB
-
-% ===== ACADEMIC SERVICE =====
-\section{Academic Service}
-
-\entry{Poster Judge}{April 16, 2026}
-{School of Biological Sciences Undergraduate Research Symposium, UNL}{Lincoln, NE}
 
 % ===== TEACHING =====
 \section{Teaching Experience}

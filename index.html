@@ -440,7 +440,7 @@
       </p>
       <div class="hero-stats">
         <div class="stat">
-          <div class="num">8</div>
+          <div class="num">9</div>
           <div class="lbl">Open-source ML tools &amp; benchmarks shipped</div>
         </div>
         <div class="stat">
@@ -512,6 +512,21 @@
   <!-- SOFTWARE & BENCHMARKS -->
   <section id="software">
     <h2 class="section-title">Software &amp; Benchmarks</h2>
+
+    <div class="pub">
+      <div class="pub-figure">
+        <img src="papers/figures/sw_rnaseq_agent.png" alt="RNA-seq Agent reliability dashboard: task success, answer grounding, and self-correction across benchmark tasks">
+      </div>
+      <div class="pub-content">
+        <div class="pub-title">RNA-seq Agent</div>
+        <p class="pub-desc">
+          An autonomous LLM agent that plans, writes, and runs Python for bulk RNA-seq analysis, reads its own output and errors, self-corrects, and returns figures with a grounded answer. Shipped with a reliability benchmark and technical report: on GSE52778 it reaches <strong>100% task success and answer grounding</strong> across 10 tasks (3 repetitions each), recovers from 3 of 3 errored runs, and takes a median of 3 steps per task. The benchmark also documents that &ldquo;how many genes are differentially expressed&rdquo; has no single ground truth, ranging from 552 to ~10,000 across pipelines.
+        </p>
+        <div class="pub-links">
+          <a href="https://github.com/brhanufen/rnaseq-agent">GitHub</a>
+        </div>
+      </div>
+    </div>
 
     <div class="pub">
       <div class="pub-figure">
